@@ -83,17 +83,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            case R.id.share_detail:
+        
                 Intent infoIntent = new Intent (this, InfoActivity.class);
                 startActivity(infoIntent);
-
-            default:
                 return super.onOptionsItemSelected(item);
 
-        }
+
 
     }
         // ***
