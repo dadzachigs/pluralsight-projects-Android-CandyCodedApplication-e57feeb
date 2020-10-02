@@ -55,17 +55,6 @@ InfoActivity.this.startActivity(i);
     }
 
 
-    private void createShareIntent(){
-Intent sendIntent = new Intent();
-sendIntent.setType("text/plain");
-sendIntent.setAction(Intent.ACTION_SEND);
-sendIntent.putExtra(Intent.EXTRA_TEXT,SHARE_DESCRIPTION  + HASHTAG_CANDYCODED);
-Intent shareIntent = Intent.createChooser(sendIntent,null);
-startActivity(shareIntent);
-
-
-
-    }
     // ***
     // TODO - Task 2 - Launch the Google Maps Activity
     // ***

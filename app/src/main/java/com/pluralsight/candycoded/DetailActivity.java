@@ -72,18 +72,23 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-
-            case R.id.share_detail:
-                Intent infoIntent = new Intent (this, InfoActivity.class);
-                startActivity(infoIntent);
-
-            default:
+        createShareIntent();
                 return super.onOptionsItemSelected(item);
 
-        }
+
     }
 
+    private void createShareIntent(){
+        Intent sendIntent = new Intent();
+        sendIntent.setType("text/plain");
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,SHARE_DESCRIPTION  + HASHTAG_CANDYCODED);
+        Intent shareIntent = Intent.createChooser(sendIntent,null);
+        startActivity(shareIntent);
+
+
+
+    }
     // ***
     // TODO - Task 4 - Share the Current Candy with an Intent
     // ***
