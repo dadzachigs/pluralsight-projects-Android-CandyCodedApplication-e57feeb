@@ -11,6 +11,9 @@ import com.squareup.picasso.Picasso;
 
 import java.net.URI;
 
+import static com.pluralsight.candycoded.DetailActivity.HASHTAG_CANDYCODED;
+import static com.pluralsight.candycoded.DetailActivity.SHARE_DESCRIPTION;
+
 public class InfoActivity extends AppCompatActivity {
 
     @Override
@@ -47,6 +50,19 @@ public class InfoActivity extends AppCompatActivity {
 Intent i = new Intent(Intent.ACTION_DIAL);
 i.setData(Uri.parse("tel:0123456789"));
 InfoActivity.this.startActivity(i);
+
+
+    }
+
+
+    private void createShareIntent(){
+Intent sendIntent = new Intent();
+sendIntent.setType("text/plain");
+sendIntent.setAction(Intent.ACTION_SEND);
+sendIntent.putExtra(Intent.EXTRA_TEXT,SHARE_DESCRIPTION  + HASHTAG_CANDYCODED);
+Intent shareIntent = Intent.createChooser(sendIntent,null);
+startActivity(shareIntent);
+
 
 
     }
