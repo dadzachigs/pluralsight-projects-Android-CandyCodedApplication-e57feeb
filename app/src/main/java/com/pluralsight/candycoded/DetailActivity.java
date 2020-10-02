@@ -75,12 +75,11 @@ public class DetailActivity extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.share_detail:
-                Intent intent = new Intent (this, InfoActivity.class);
-                startActivity(intent);
+                Intent infoIntent = new Intent (this, InfoActivity.class);
+                startActivity(infoIntent);
 
             default:
-
-        return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
 
         }
     }

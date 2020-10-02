@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -79,21 +80,39 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main, menu);
         return true;
     }
-    // ***
-    // TODO - Task 1 - Show Store Information Activity
-    // ***
 
-    private void addCandiesToDatabase(Candy[] candies) {
-        SQLiteDatabase db = candyDbHelper.getWritableDatabase();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        for (Candy candy : candies) {
-            ContentValues values = new ContentValues();
-            values.put(CandyEntry.COLUMN_NAME_NAME, candy.name);
-            values.put(CandyEntry.COLUMN_NAME_PRICE, candy.price);
-            values.put(CandyEntry.COLUMN_NAME_DESC, candy.description);
-            values.put(CandyEntry.COLUMN_NAME_IMAGE, candy.image);
+        switch (item.getItemId()) {
 
-            db.insert(CandyEntry.TABLE_NAME, null, values);
+            case R.id.share_detail:
+                Intent infoIntent = new Intent (this, InfoActivity.class);
+                startActivity(infoIntent);
+
+            default:
+                return super.onOptionsItemSelected(item);
+
         }
+
     }
-}
+        // ***
+        // TODO - Task 1 - Show Store Information Activity
+        // ***
+
+        private void addCandiesToDatabase (Candy[]candies){
+            SQLiteDatabase db = candyDbHelper.getWritableDatabase();
+
+            for (Candy candy : candies) {
+                ContentValues values = new ContentValues();
+                values.put(CandyEntry.COLUMN_NAME_NAME, candy.name);
+                values.put(CandyEntry.COLUMN_NAME_PRICE, candy.price);
+                values.put(CandyEntry.COLUMN_NAME_DESC, candy.description);
+                values.put(CandyEntry.COLUMN_NAME_IMAGE, candy.image);
+
+                db.insert(CandyEntry.TABLE_NAME, null, values);
+            }
+        }
+
+
+    }
